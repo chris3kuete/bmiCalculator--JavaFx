@@ -32,6 +32,7 @@ public class BmiCalculatorFrancais extends Application {
     private TextField CustBmi = new TextField();
     private TextField HisStatus = new TextField();
     private Button btCalculate = new Button("Calculer");
+    private Button btReset = new Button("Reset");
     
     private TextArea t = new TextArea();
     
@@ -56,6 +57,7 @@ public class BmiCalculatorFrancais extends Application {
         g.add(HisStatus, 1, 7);
         g.add(btCalculate, 1, 4);
         g.add(t, 1, 12);
+        g.add(btReset, 1, 15);
         
         g.setAlignment(Pos.CENTER);
         //CustName.setAlignment(Pos.BOTTOM_RIGHT);
@@ -69,6 +71,7 @@ public class BmiCalculatorFrancais extends Application {
         CustBmi.setEditable(false);
         
         btCalculate.setOnAction(e -> calculateBmi());
+        btReset.setOnAction(e -> resetEverything());
         
         
         
@@ -92,7 +95,16 @@ public class BmiCalculatorFrancais extends Application {
         //CustBmi.setText(String.format("$.2f", bmi.getBmi()));   
         CustBmi.setText(String.format("%.2f", bmi.getBmi()));
         HisStatus.setText(bmi.getStatus());
-        t.setText(bmi.getName() + " a "+ bmi.getAge()+" ans, avec une Indice de Masse Corporelle de " + bmi.getBmi() +" et est " + bmi.getStatus() );
+        t.setText(bmi.getName() + " a "+ bmi.getAge()+" ans, avec une Indice de Masse Corporelle de " + bmi.getBmi() +" et " + bmi.getStatus() );
+    }
+    private void resetEverything(){
+       CustName.clear();
+       CustAge.clear();
+       CustWeight.clear();
+       CustHeight.clear();
+       CustBmi.clear();
+       HisStatus.clear();
+       t.clear();
     }
 
     /**
